@@ -3,7 +3,7 @@ import pandas as pd
 from pathlib2 import Path
 
 def replace_none_with_empty():
-    df = Path(r"events.csv")
+    df = Path(r"source\events.csv")
 
     data = df.read_text()
     data = data.replace("brak", "")
@@ -12,7 +12,7 @@ def replace_none_with_empty():
 
 replace_none_with_empty()
 
-df = pd.read_csv(r"events.csv",
+df = pd.read_csv(r"source\events.csv",
     delimiter = ",",
     usecols = ["Typ", "Tytuł", "Uwaga", "Pierwszy dzień", "Ostatni dzień", "Ogłoszony początek", "Ogłoszony koniec", "Miejsce"],
     dtype = None)

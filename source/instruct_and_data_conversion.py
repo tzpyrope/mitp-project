@@ -5,17 +5,27 @@ import numpy as np
 import csv
 from vardata import *
 
-def main_part_instructions():
-    print("Wybierz jedną z poniższych opcji:\n1 - podaje jakie masz zajęcia w podanym dniu o danej godzinie\
-        \njeśli nie masz wtedy zajęć, podaje kiedy masz następne zajęcia tego samego dnia\
-        \n2 - podaje kiedy masz najbliższe zajęcia z danego przedmiotu (w oparciu o obecną datę lub sprecyzowaną)\
-        \n3 - podaje twój plan zajęć na dany dzień\
-        \n4 - dodaje wydarzenie\
-        \n5 - usuwa wydarzenie\
-        \n6 - wyszukaj wolne sloty w podanym terminie\
-        \n7 - podaje ile w danym okresie czasowym masz zaplanowanych wydarzeń\
-        \nhelp - pokazuje ponownie listę opcji\
-        \nexit - zakończ program\n")
+def get_main_part_instructions():
+    instructions = {"1": "podaje jakie masz zajęcia w podanym dniu o danej godzinie\
+        \njeśli nie masz wtedy zajęć, podaje kiedy masz następne zajęcia tego samego dnia",
+        "2": "podaje kiedy masz najbliższe zajęcia z danego przedmiotu (w oparciu o obecną datę lub sprecyzowaną)",
+        "3": "podaje twój plan zajęć na dany dzień",
+        "4": "dodaje wydarzenie",
+        "5": "usuwa wydarzenie",
+        "6": "wyszukaj wolne sloty w podanym terminie",
+        "7": "podaje ile w danym okresie czasowym masz zaplanowanych wydarzeń",
+        "help": "pokazuje ponownie listę opcji",
+        "exit": "zakończ program"}
+    
+    return instructions
+    
+def print_main_part_instructions():
+    instructions = get_main_part_instructions()
+    
+    print("\nWybierz jedną z poniższych opcji:")
+    for key, value in instructions.items():
+        print(f"{key} - {value}")
+    print("\n")
 
 def append_hour(date_list: list, hour_list: list, ending_list: list):
     for i in range(len(date_list)):
