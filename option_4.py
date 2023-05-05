@@ -177,7 +177,7 @@ def user_chose_option_4():
     inputs = make_inputs_into_dict()
     (input_dict, overlap) = inputs
 
-    if len(overlap[0]) == 0:
+    if len(overlap) == 0:
         add_new_event(input_dict)
     else:
         print("\nTwoje wydarzenie pokrywa się czasowo z innymi zaplanowanymi już wydarzeniami, na przykład:")

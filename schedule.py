@@ -25,6 +25,8 @@ while True:
     elif user_choice == "help":
         print("\n")
         main_part_instructions()
+    elif user_choice == "exit":
+        exit()
 
     else: # użytkownik wpisuje coś innego niż 1, 2, 3 etc.
         print("oopsie")

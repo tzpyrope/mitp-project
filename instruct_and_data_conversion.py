@@ -14,7 +14,8 @@ def main_part_instructions():
         \n5 - usuwa wydarzenie\
         \n6 - wyszukaj wolne sloty w podanym terminie\
         \n7 - podaje ile w danym okresie czasowym masz zaplanowanych wydarzeń\
-        \nhelp - pokazuje ponownie listę opcji\n")
+        \nhelp - pokazuje ponownie listę opcji\
+        \nexit - zakończ program\n")
 
 def append_hour(date_list: list, hour_list: list, ending_list: list):
     for i in range(len(date_list)):
