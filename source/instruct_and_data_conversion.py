@@ -3,7 +3,7 @@ from tabulate import tabulate
 from operator import itemgetter
 import numpy as np
 import csv
-from vardata import *
+from .vardata import *
 
 def get_main_part_instructions():
     instructions = {"1": "podaje jakie masz zajęcia w podanym dniu o danej godzinie\

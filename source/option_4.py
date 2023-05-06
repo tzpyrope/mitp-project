@@ -1,4 +1,4 @@
-from instruct_and_data_conversion import *
+from .instruct_and_data_conversion import *
 
 def get_title_input():
     title = input("\nŻeby dodać nowe wydarzenie, najpierw wpisz tytuł wydarzenia: ")
@@ -189,4 +189,4 @@ def user_chose_option_4():
 
                 print(f"{overlap[i][0]}: {date_start} - {date_end}")
         
-        print("\nJeśli w ciągu wcześniej zaplanowanego wydarzenia dzieje się coś, co chcesz mieć w planie, możesz usunąć kolidujące wydarzenie.\n\n")
+        print("\nJeśli w ciągu wcześniej zaplanowanego wydarzenia dzieje się coś, co chcesz mieć w planie, możesz usunąć kolidujące wydarzenie.\n")
