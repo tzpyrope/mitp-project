@@ -64,7 +64,7 @@ def if_next_class_found(busy: bool, next_class, datetime_date: datetime):
         next_class_str = "{:d}:{:02d}".format(next_class.hour, next_class.minute)
         string = f"Następne najbliższe wydarzenie tego dnia jest o godzinie {next_class_str}, {hours_until} od teraz."
     else:
-        string = "Po podanej godzinie nie masz żadnych zaplanowanych wydzareń tego dnia."
+        string = "Po podanej godzinie nie masz żadnych zaplanowanych wydarzeń tego dnia."
     
     return string
 
