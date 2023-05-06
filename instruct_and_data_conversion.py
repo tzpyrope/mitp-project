@@ -19,13 +19,17 @@ def get_main_part_instructions():
     
     return instructions
     
-def print_main_part_instructions():
+def make_main_part_instructions_str():
     instructions = get_main_part_instructions()
     
-    print("\nWybierz jedną z poniższych opcji:")
+    instructions_str = ""
+
+    instructions_str += "\nWybierz jedną z poniższych opcji:"
     for key, value in instructions.items():
-        print(f"{key} - {value}")
-    print("")
+        instructions_str += f"\n{key} - {value}"
+    instructions_str += "\n"
+
+    return instructions_str
 
 def append_hour(date_list: list, hour_list: list, ending_list: list):
     for i in range(len(date_list)):
@@ -77,8 +81,6 @@ def make_multidimensional_list_for_end_days(start_time_end_day: list, end_time_e
         end_time_end_day[i].append(date_end)
 
 def end_days_datetime_list_conversion(return_start: bool):
-    # utworzenie dwuwymiarowej listy dla kolumny end_days
-    # + co jeśli end_days == missing value albo jest takie samo jak start_days
     start_time_end_days = []
     end_time_end_days = []
 
@@ -87,8 +89,6 @@ def end_days_datetime_list_conversion(return_start: bool):
     for i in range(len(end_days)):
         if pd.isna(end_days[i]) or end_days[i] == start_days[i]:
             account_for_single_day_events(start_time_end_days, end_time_end_days, weeks)
-        # wzięcie start_days[i] i end_days[i], policzenie ile jest między nimi tygodni (start_days wliczone, więc nie trzeba potem robić insert)
-        # musi być w datetime
         else:
             make_multidimensional_list_for_end_days(start_time_end_days, end_time_end_days, weeks, i)
 
@@ -98,15 +98,12 @@ def end_days_datetime_list_conversion(return_start: bool):
         return end_time_end_days
 
 def start_days_datetime_list_conversion(return_start: bool):
-    # data zajęć w kolumnie "pierwszy dzień" + godzina rozpoczęcia/zakończenia
     start_time_start_days = []
     end_time_start_days = []
 
-    # godziny rozpoczęcia, zakończenia zajęć dodane do start_days
     append_hour(start_days, start_time, start_time_start_days)
     append_hour(start_days, end_time, end_time_start_days)
 
-    # str na datetime dla start_days zajęć + godziny rozpoczęcia, zakończenia zajęć
     datetime_list_conversion(start_time_start_days)
     datetime_list_conversion(end_time_start_days)
 
@@ -130,7 +127,6 @@ def final_end_days_list_conversion():
     return full_end
 
 def final_start_days_list_conversion():
-    # łączenie dni początkowych i końcowych w dwie dwuwymiarowe listy, jedna z godzinami rozpoczęcia i druga zakończenia
     full_start = []
 
     start_time_start_days_list = start_days_datetime_list_conversion(True)

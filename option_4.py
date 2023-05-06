@@ -180,7 +180,7 @@ def user_chose_option_4():
     if len(overlap) == 0:
         add_new_event(input_dict)
     else:
-        print("\nTwoje wydarzenie pokrywa się czasowo z innymi zaplanowanymi już wydarzeniami, na przykład:")
+        print("\n\nTwoje wydarzenie pokrywa się czasowo z innymi zaplanowanymi już wydarzeniami, na przykład:")
 
         for i in range(len(overlap)):
             if i < 3:
@@ -189,5 +189,4 @@ def user_chose_option_4():
 
                 print(f"{overlap[i][0]}: {date_start} - {date_end}")
         
-        print("\nJeśli w ciągu wcześniej zaplanowanego wydarzenia dzieje się coś, co chcesz mieć w planie, możesz usunąć kolidujące wydarzenie.\
-              \nMożesz też dodać adnotację do już istniejącego wydarzenia, która poinformuje cię, że w tym samym czasie dzieje się coś ważnego.\n")
+        print("\nJeśli w ciągu wcześniej zaplanowanego wydarzenia dzieje się coś, co chcesz mieć w planie, możesz usunąć kolidujące wydarzenie.\n\n")
