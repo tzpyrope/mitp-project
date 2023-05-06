@@ -3,7 +3,7 @@ from tabulate import tabulate
 from operator import itemgetter
 import numpy as np
 import csv
-from vardata import *
+from .vardata import *
 
 def get_main_part_instructions():
     instructions = {"1": "podaje jakie masz zajęcia w podanym dniu o danej godzinie\
@@ -19,13 +19,17 @@ def get_main_part_instructions():
     
     return instructions
     
-def print_main_part_instructions():
+def make_main_part_instructions_str():
     instructions = get_main_part_instructions()
     
-    print("\nWybierz jedną z poniższych opcji:")
+    instructions_str = ""
+
+    instructions_str += "\nWybierz jedną z poniższych opcji:"
     for key, value in instructions.items():
-        print(f"{key} - {value}")
-    print("\n")
+        instructions_str += f"\n{key} - {value}"
+    instructions_str += "\n"
+
+    return instructions_str
 
 def append_hour(date_list: list, hour_list: list, ending_list: list):
     for i in range(len(date_list)):

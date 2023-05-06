@@ -1,10 +1,4 @@
-from .option_1 import *
-from option_2 import *
-from option_3 import *
-from option_4 import *
-from option_6 import *
-from option_7 import *
-import sys
+from source import *
 
 def get_user_choice_input():
     choice = input()
@@ -22,8 +16,10 @@ def check_if_wrong_choice_input(choice: str):
     return choice
 
 def main():
+    instructions = make_main_part_instructions_str()
+    print(instructions)
+
     while True:
-        print_main_part_instructions()
         user_choice = get_user_choice_input()
 
         user_choice = check_if_wrong_choice_input(user_choice)
@@ -40,7 +36,9 @@ def main():
             user_chose_option_6()
         elif user_choice == "7":
             user_chose_option_7()
+        elif user_choice == "help":
+            print(instructions)
         elif user_choice == "exit":
-            exit()
+            break
 
 main()
