@@ -163,7 +163,7 @@ def add_new_event(input_dict: dict):
 
     if choice == "y":
         column_names = list(input_dict.keys())
-        with open("source\events.csv", "a", encoding = "utf8", newline="") as csvfile:
+        with open("mitp-project\source\events.csv", "a", encoding = "utf8", newline="") as csvfile:
             dictwriter_object = csv.DictWriter(csvfile, fieldnames = column_names)
 
             dictwriter_object.writerow(input_dict)
