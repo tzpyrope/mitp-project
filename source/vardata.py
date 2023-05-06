@@ -8,6 +8,8 @@ def replace_none_with_empty():
 
     data = df.read_text()
     data = data.replace("brak", "")
+    data = data.replace('"""', '"')
+    data = data.replace('"brak"', "")
 
     df.write_text(data)
 

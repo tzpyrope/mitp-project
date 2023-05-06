@@ -127,15 +127,15 @@ def make_inputs_into_dict():
     dict = {
         "Nazwa": "brak",
         "Grupa": "brak",
-        "Typ": event_type,
-        "Tytuł": title,
+        "Typ": f"\"{event_type}\"",
+        "Tytuł": f"\"{title}\"",
         "Uwaga": "brak",
         "Dzień tygodnia": "brak",
-        "Pierwszy dzień": start_day, 
-        "Ostatni dzień": end_day, 
-        "Ogłoszony początek": start_hour, 
-        "Ogłoszony koniec": end_hour, 
-        "Miejsce": place,
+        "Pierwszy dzień": f"\"{start_day}\"", 
+        "Ostatni dzień": f"\"{end_day}\"", 
+        "Ogłoszony początek": f"\"{start_hour}\"", 
+        "Ogłoszony koniec": f"\"{end_hour}\"", 
+        "Miejsce": f"\"{place}\"",
         "Pojemność": "brak",
         "Prowadzący / Odpowiedzialny": "brak",
         "E-mail": "brak",
@@ -163,7 +163,7 @@ def add_new_event(input_dict: dict):
 
     if choice == "y":
         column_names = list(input_dict.keys())
-        with open("events.csv", "a", encoding = "utf8", newline="") as csvfile:
+        with open("source\events.csv", "a", encoding = "utf8", newline="") as csvfile:
             dictwriter_object = csv.DictWriter(csvfile, fieldnames = column_names)
 
             dictwriter_object.writerow(input_dict)
