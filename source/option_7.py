@@ -1,5 +1,6 @@
 from .instruct_and_data_conversion import *
 
+
 def option_7_user_input():
     print(f"\nPodaj przedział czasowy, który chcesz sprawdzić (format dd/mm/yyyy).\
               \nJeśli interesuje cię konkretny dzień, wpisz jedną datę.\

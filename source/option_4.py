@@ -1,5 +1,6 @@
 from .instruct_and_data_conversion import *
 
+
 def get_title_input():
     title = input("\nŻeby dodać nowe wydarzenie, najpierw wpisz tytuł wydarzenia: ")
 

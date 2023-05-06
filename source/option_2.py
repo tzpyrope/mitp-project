@@ -1,5 +1,6 @@
 from .instruct_and_data_conversion import *
 
+
 def generate_subject_options():
     subject_set = set(subject_list)
     subject_pool_dict = {} # żeby móc dopasować wybrany numer do odpowiedniego przedmiotu

@@ -5,6 +5,7 @@ import numpy as np
 import csv
 from .vardata import *
 
+
 def get_main_part_instructions():
     instructions = {"1": "podaje jakie masz zajęcia w podanym dniu o danej godzinie\
         \njeśli nie masz wtedy zajęć, podaje kiedy masz następne zajęcia tego samego dnia",
