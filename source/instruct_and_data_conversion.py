@@ -62,7 +62,7 @@ def account_for_single_day_events(start_time_end_day: list, end_time_end_day: li
     end_time_end_day.append("N/A")
     weeks.append(0)
 
-def make_multidimensional_list_for_end_days(start_time_end_day: list, end_time_end_day: list, weeks: list, i: int):
+def make_multidimensional_list_for_end_days(start_time_end_day: list, end_time_end_day: list, weeks: list, i: int): # refactor this
     end_day = datetime.strptime(end_days[i], "%d.%m.%Y")
     start_day = datetime.strptime(start_days[i], "%d.%m.%Y")
     week_count = (abs(end_day - start_day).days) // 7
@@ -81,7 +81,7 @@ def make_multidimensional_list_for_end_days(start_time_end_day: list, end_time_e
         start_time_end_day[i].append(date_begin)
         end_time_end_day[i].append(date_end)
 
-def end_days_datetime_list_conversion(return_start: bool):
+def end_days_datetime_list_conversion(return_start: bool): # refactor this
     start_time_end_days = []
     end_time_end_days = []
 
