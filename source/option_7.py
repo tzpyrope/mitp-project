@@ -1,4 +1,4 @@
-from .instruct_and_data_conversion import *
+from .instruct_and_date_conversion import *
 
 
 def option_7_user_input():
@@ -6,7 +6,7 @@ def option_7_user_input():
               \nJeśli interesuje cię konkretny dzień, wpisz jedną datę.\
               \nPrzykład: {current_date_str}\
               \nJeśli interesuje cię przedział pomiędzy dwoma datami, wpisz obie.\
-              \nPrzykład: {current_date_str} - {tomorrow_str}\n")
+              \nPrzykład: {current_date_str} - {tommorow_time_str}\n")
     
     user_input = input()
 

@@ -3,7 +3,7 @@ from tabulate import tabulate
 from operator import itemgetter
 import numpy as np
 import csv
-from .vardata import *
+from .variables import *
 
 
 def get_main_part_instructions():
@@ -81,7 +81,7 @@ def make_multidimensional_list_for_end_days(start_time_end_day: list, end_time_e
         start_time_end_day[i].append(date_begin)
         end_time_end_day[i].append(date_end)
 
-def end_days_datetime_list_conversion(return_start: bool): # refactor this
+def end_days_datetime_list_conversion(): # refactor this
     start_time_end_days = []
     end_time_end_days = []
 
@@ -91,14 +91,27 @@ def end_days_datetime_list_conversion(return_start: bool): # refactor this
         if pd.isna(end_days[i]) or end_days[i] == start_days[i]:
             account_for_single_day_events(start_time_end_days, end_time_end_days, weeks)
         else:
-            make_multidimensional_list_for_end_days(start_time_end_days, end_time_end_days, weeks, i)
+            end_day = datetime.strptime(end_days[i], "%d.%m.%Y")
+            start_day = datetime.strptime(start_days[i], "%d.%m.%Y")
+            week_count = (abs(end_day - start_day).days) // 7
+            weeks.append(week_count)
+            
+            start_time_end_days.append([])
+            end_time_end_days.append([])
 
-    if return_start:
-        return start_time_end_days
-    else:
-        return end_time_end_days
+            for number in range(0, (week_count + 1)):
+                date = start_day + timedelta(weeks=number)
+                date = datetime.strftime(date, "%d.%m.%Y")
+                date_begin = date + " " + start_time[i]
+                date_end = date + " " + end_time[i]
+                date_begin = datetime.strptime(date_begin, "%d.%m.%Y %H:%M")
+                date_end = datetime.strptime(date_end, "%d.%m.%Y %H:%M")
+                start_time_end_days[i].append(date_begin)
+                end_time_end_days[i].append(date_end)
 
-def start_days_datetime_list_conversion(return_start: bool):
+    return start_time_end_days, end_time_end_days
+
+def start_days_datetime_list_conversion():
     start_time_start_days = []
     end_time_start_days = []
 
@@ -108,38 +121,26 @@ def start_days_datetime_list_conversion(return_start: bool):
     datetime_list_conversion(start_time_start_days)
     datetime_list_conversion(end_time_start_days)
 
-    if return_start:
-        return start_time_start_days
-    else:
-        return end_time_start_days
+    return start_time_start_days, end_time_start_days
     
-def final_end_days_list_conversion():
+def final_list_conversion():
+    full_start = []
     full_end = []
 
-    end_time_start_days_list = start_days_datetime_list_conversion(False)
-    end_time_end_days_list = end_days_datetime_list_conversion(False)
+    start_days_list = start_days_datetime_list_conversion()
+    (start_time_start_days, end_time_start_days) = start_days_list
+    end_days_list = end_days_datetime_list_conversion()
+    (start_time_end_days, end_time_end_days) = end_days_list
 
-    for i in range(len(end_time_start_days_list)):
-        if end_time_end_days_list[i] == "N/A":
-            full_end.append([end_time_start_days_list[i]])
+    for i in range(len(end_time_start_days)):
+        if end_time_end_days[i] == "N/A":
+            full_start.append([start_time_start_days[i]])
+            full_end.append([end_time_start_days[i]])
         else:
-            full_end.append(end_time_end_days_list[i])
+            full_start.append(start_time_end_days[i])
+            full_end.append(end_time_end_days[i])
 
-    return full_end
+    return full_start, full_end
 
-def final_start_days_list_conversion():
-    full_start = []
-
-    start_time_start_days_list = start_days_datetime_list_conversion(True)
-    start_time_end_days_list = end_days_datetime_list_conversion(True)
-
-    for i in range(len(start_time_start_days_list)):
-        if start_time_end_days_list[i] == "N/A":
-            full_start.append([start_time_start_days_list[i]])
-        else:        
-            full_start.append(start_time_end_days_list[i])
-
-    return full_start
-
-full_start = final_start_days_list_conversion()
-full_end = final_end_days_list_conversion()
+full_dates = final_list_conversion()
+(full_start, full_end) = full_dates
