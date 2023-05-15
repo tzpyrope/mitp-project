@@ -60,9 +60,7 @@ def search_through_rest_of_day(datetime_date: datetime):
     for i in range(1, 21):
         time_diff = datetime_date + timedelta(hours=i)
         possible_next_class.append(time_diff)
-        if time_diff > datetime_date.replace(
-            hour=20
-        ):
+        if time_diff > datetime_date.replace(hour=20):
             break
 
     return possible_next_class
