@@ -12,14 +12,18 @@ def check_if_user_input_day_is_correct(user_input: str):
 
     return user_input
 
+
 def option_6_user_input_day():
-    print(f"\nPodaj dzień, który chcesz sprawdzić (format dd/mm/yyyy).\
-          \nPrzykład: {current_date_str}.\n")
+    print(
+        f"\nPodaj dzień, który chcesz sprawdzić (format dd/mm/yyyy).\
+          \nPrzykład: {current_date_str}.\n"
+    )
     user_input = input()
 
     user_day = check_if_user_input_day_is_correct(user_input)
 
     return user_day
+
 
 def check_if_user_input_hours_is_correct(user_input: str):
     while True:
@@ -33,9 +37,12 @@ def check_if_user_input_hours_is_correct(user_input: str):
 
     return user_input
 
+
 def option_6_user_input_hours():
-    print("\nPodaj przedział godzinowy (jeśli chcesz zobaczyć wolne sloty dla całego dnia, napisz \"brak\").\
-            \nPrzykład: 12:30 - 16:00\n")
+    print(
+        '\nPodaj przedział godzinowy (jeśli chcesz zobaczyć wolne sloty dla całego dnia, napisz "brak").\
+            \nPrzykład: 12:30 - 16:00\n'
+    )
     user_input = input()
 
     if user_input != "brak":
@@ -44,6 +51,7 @@ def option_6_user_input_hours():
         user_hours = user_input
 
     return user_hours
+
 
 def convert_user_hours_to_datetime(day: str, hours: str):
     user_hours_list = hours.split(" - ")
@@ -54,14 +62,19 @@ def convert_user_hours_to_datetime(day: str, hours: str):
 
     return user_hours_list
 
+
 def search_for_classes_between_specified_dates(dates: list):
     busy_time = []
     flag = 0
 
     for i in range(len(full_start)):
         for j in range(len(full_start[i])):
-            if (full_start[i][j] >= dates[0] - timedelta(hours=2, minutes=15) and full_end[i][j] > dates[0] 
-                and full_start[i][j] < dates[1] and full_end[i][j] <= dates[1] + timedelta(hours=2, minutes=15)):
+            if (
+                full_start[i][j] >= dates[0] - timedelta(hours=2, minutes=15)
+                and full_end[i][j] > dates[0]
+                and full_start[i][j] < dates[1]
+                and full_end[i][j] <= dates[1] + timedelta(hours=2, minutes=15)
+            ):
                 busy_time.append([])
 
                 busy_time[flag].append(full_start[i][j])
@@ -73,6 +86,7 @@ def search_for_classes_between_specified_dates(dates: list):
 
     return sorted_busy_time
 
+
 def search_for_empty_slots_if_hours_specified(dates: list, busy_time: list):
     busy_time_len = len(busy_time) - 1
 
@@ -80,7 +94,7 @@ def search_for_empty_slots_if_hours_specified(dates: list, busy_time: list):
     flag = 0
 
     for i in range(len(busy_time)):
-        if i == 0  and busy_time_len == i:
+        if i == 0 and busy_time_len == i:
             if busy_time[i][0] > dates[0]:
                 empty_slots.append([])
 
@@ -88,7 +102,7 @@ def search_for_empty_slots_if_hours_specified(dates: list, busy_time: list):
                 empty_slots[flag].append(busy_time[i][0])
 
                 flag += 1
-            
+
             if busy_time[i][1] < dates[1]:
                 empty_slots.append([])
 
@@ -113,7 +127,7 @@ def search_for_empty_slots_if_hours_specified(dates: list, busy_time: list):
                     empty_slots[flag].append(dates[1])
 
                     flag += 1
-            
+
             elif busy_time[i][0] > dates[0] and i == 0:
                 empty_slots.append([])
 
@@ -134,10 +148,12 @@ def search_for_empty_slots_if_hours_specified(dates: list, busy_time: list):
 
     return sorted_empty_slots
 
+
 def convert_user_day_to_datetime(day: str):
     day = datetime.strptime(day, "%d/%m/%Y")
 
     return day
+
 
 def search_for_classes_for_date(day: str):
     busy_time = []
@@ -156,6 +172,7 @@ def search_for_classes_for_date(day: str):
     sorted_busy_time = sorted(busy_time, key=itemgetter(0))
 
     return sorted_busy_time
+
 
 def search_for_empty_slots_if_hours_not_specified(day: str, busy_time: list):
     busy_time_len = len(busy_time) - 1
@@ -192,12 +209,14 @@ def search_for_empty_slots_if_hours_not_specified(day: str, busy_time: list):
 
     return sorted_empty_slots
 
+
 def user_chose_to_specify_hours(day: str, hours: str):
     dates_list = convert_user_hours_to_datetime(day, hours)
     busy_time = search_for_classes_between_specified_dates(dates_list)
     empty_slots = search_for_empty_slots_if_hours_specified(dates_list, busy_time)
 
     return empty_slots
+
 
 def user_chose_not_to_specify_hours(day: str):
     day_datetime = convert_user_day_to_datetime(day)
@@ -206,14 +225,18 @@ def user_chose_not_to_specify_hours(day: str):
 
     return empty_slots
 
+
 def print_empty_slots(empty_slots):
     for i in range(len(empty_slots)):
         for j in range(len(empty_slots[i])):
-            empty_slots[i][j] = "{:d}:{:02d}".format(empty_slots[i][j].hour, empty_slots[i][j].minute)
-        
+            empty_slots[i][j] = "{:d}:{:02d}".format(
+                empty_slots[i][j].hour, empty_slots[i][j].minute
+            )
+
         print(f"{empty_slots[i][0]} - {empty_slots[i][1]}")
 
     print("\n")
+
 
 def user_chose_option_6():
     user_day = option_6_user_input_day()

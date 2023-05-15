@@ -1,8 +1,8 @@
 import pandas as pd
 from pathlib2 import Path
 
-class ReadCsvData():
 
+class ReadCsvData:
     def __init__(self, file_path):
         self.__file_path = file_path
 
@@ -21,9 +21,20 @@ class ReadCsvData():
         df.write_text(data)
 
     def read_schedule_csv(self):
-        df = pd.read_csv(r"%s" % self.__file_path,
-            delimiter = ",",
-            usecols = ["Typ", "Tytuł", "Uwaga", "Pierwszy dzień", "Ostatni dzień", "Ogłoszony początek", "Ogłoszony koniec", "Miejsce"],
-            dtype = None)
-        
+        df = pd.read_csv(
+            r"%s" % self.__file_path,
+            delimiter=",",
+            usecols=[
+                "Typ",
+                "Tytuł",
+                "Uwaga",
+                "Pierwszy dzień",
+                "Ostatni dzień",
+                "Ogłoszony początek",
+                "Ogłoszony koniec",
+                "Miejsce",
+            ],
+            dtype=None,
+        )
+
         return df
