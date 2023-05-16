@@ -18,7 +18,9 @@ def check_if_wrong_choice_input(choice: str):
     return choice
 
 
-def main():
+def main(filepath):
+
+
     instructions = make_main_part_instructions_str()
     print(instructions)
 
@@ -28,13 +30,20 @@ def main():
         user_choice = check_if_wrong_choice_input(user_choice)
 
         if user_choice == "1":
-            user_chose_option_1()
+            chosen_mode = Mode1()
+            chosen_mode.user_chose_option_1()
         elif user_choice == "2":
-            user_chose_option_2()
+            chosen_mode = Mode2()
+            chosen_mode.user_chose_option_2()
         elif user_choice == "3":
-            user_chose_option_3()
+            chosen_mode = Mode3()
+            chosen_mode.user_chose_option_3()
         elif user_choice == "4":
-            user_chose_option_4()
+            chosen_mode = Mode4()
+            chosen_mode.user_chose_option_4()
+        elif user_choice == "5":
+            chosen_mode = Mode5()
+            print(chosen_mode)
         elif user_choice == "6":
             user_chose_option_6()
         elif user_choice == "7":
