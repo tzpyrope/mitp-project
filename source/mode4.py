@@ -2,8 +2,8 @@ from .instruct_and_date_conversion import *
 
 
 class Mode4():
-    def __init__(self, file_path):
-        self.__file_path = file_path
+    def __init__(self):
+        self.__file_path = rc1.file_path
 
     @property
     def file_path(self):
@@ -191,13 +191,13 @@ class Mode4():
         return choice
 
 
-    def add_new_event(self, input_dict: dict, filepath):
+    def add_new_event(self, input_dict: dict):
         choice = self.confirm_the_change(input_dict)
 
         if choice == "y":
             column_names = list(input_dict.keys())
             with open(
-                f"{filepath}", "a", encoding="utf8", newline=""
+                f"{self.file_path}", "a", encoding="utf8", newline=""
             ) as csvfile:
                 dictwriter_object = csv.DictWriter(csvfile, fieldnames=column_names)
 

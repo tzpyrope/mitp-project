@@ -18,8 +18,7 @@ def check_if_wrong_choice_input(choice: str):
     return choice
 
 
-def main(filepath):
-
+def main():
 
     instructions = make_main_part_instructions_str()
     print(instructions)
