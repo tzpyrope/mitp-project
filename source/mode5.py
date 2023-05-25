@@ -1,16 +1,16 @@
 from .instruct_and_date_conversion import *
 from .mode2 import *
 
-class Mode5(Mode2):
-    def get_class_type_and_subject_name(self):
-        type_and_subject = super(Mode5, self).get_class_type_and_subject_name()
-        (class_type, subject, irrelevant) = type_and_subject
 
-        return class_type, subject
+def get_class_type_and_subject_name():
+    pass
+    # (class_type, subject, irrelevant) = type_and_subject
+
+    # return class_type, subject
     
     
-    def __str__(self):
-        tuple_test = self.get_class_type_and_subject_name()
-        (class_type, subject) = tuple_test
+def test():
+    tuple_test = get_class_type_and_subject_name()
+    (class_type, subject) = tuple_test
 
-        return f"{subject}, {class_type}"
+    return f"{subject}, {class_type}"

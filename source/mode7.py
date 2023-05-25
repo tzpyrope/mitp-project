@@ -7,7 +7,7 @@ def option_7_user_input():
               \nJeśli interesuje cię konkretny dzień, wpisz jedną datę.\
               \nPrzykład: {current_date_str}\
               \nJeśli interesuje cię przedział pomiędzy dwoma datami, wpisz obie.\
-              \nPrzykład: {current_date_str} - {tommorow_time_str}\n"
+              \nPrzykład: {current_date_str} - {tomorrow_time_str}\n"
     )
 
     user_input = input()
@@ -46,8 +46,7 @@ def find_classes_for_multiple_dates(user_dates: list, classes: dict, class_types
     for i in range(len(full_start)):
         for j in range(len(full_start[i])):
             if (
-                full_start[i][j].date() <= user_dates[1].date()
-                and full_start[i][j].date() >= user_dates[0].date()
+                user_dates[1].date() >= full_start[i][j].date() >= user_dates[0].date()
             ):
                 classes.append(subject_list[i])
                 class_types.append(class_type_list[i])

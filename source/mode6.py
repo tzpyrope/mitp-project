@@ -70,10 +70,8 @@ def search_for_classes_between_specified_dates(dates: list):
     for i in range(len(full_start)):
         for j in range(len(full_start[i])):
             if (
-                full_start[i][j] >= dates[0] - timedelta(hours=2, minutes=15)
-                and full_end[i][j] > dates[0]
-                and full_start[i][j] < dates[1]
-                and full_end[i][j] <= dates[1] + timedelta(hours=2, minutes=15)
+                dates[0] - timedelta(hours=2, minutes=15) <= full_start[i][j] < dates[1]
+                and dates[0] < full_end[i][j] <= dates[1] + timedelta(hours=2, minutes=15)
             ):
                 busy_time.append([])
 

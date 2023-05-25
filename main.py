@@ -29,11 +29,9 @@ def main():
         user_choice = check_if_wrong_choice_input(user_choice)
 
         if user_choice == "1":
-            chosen_mode = Mode1()
-            chosen_mode.user_chose_option_1()
+            user_chose_option_1()
         elif user_choice == "2":
-            chosen_mode = Mode2()
-            chosen_mode.user_chose_option_2()
+            user_chose_option_2()
         elif user_choice == "3":
             chosen_mode = Mode3()
             chosen_mode.user_chose_option_3()
