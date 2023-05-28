@@ -96,7 +96,10 @@ def create_lists_of_dates(start_day, end_day, start_hour, end_hour):
     start_day_time = datetime.strptime(start_day + " " + start_hour, "%d.%m.%Y %H:%M")
     end_day_time = datetime.strptime(start_day + " " + end_hour, "%d.%m.%Y %H:%M")
 
-    if end_day != "brak":
+    if end_day == "brak":
+        start_dates_list.append(start_day_time)
+        end_dates_list.append(end_day_time)
+    else:
         week_count = count_weeks_between_dates(start_day, end_day)
 
         for i in range(0, week_count + 1):
@@ -116,7 +119,9 @@ def check_if_events_overlap(start_day, end_day, start_hour, end_hour):
     for i in range(len(start_list)):
         for j in range(len(full_start)):
             for k in range(len(full_start[j])):
-                if (start_list[i] < full_start[j][k] < end_list[i]) or (start_list[i] < full_end[j][k] < end_list[i]):
+                if (
+                    full_start[j][k] > start_list[i] and full_start[j][k] < end_list[i]
+                ) or (full_end[j][k] > start_list[i] and full_end[j][k] < end_list[i]):
                     overlaps.append([])
 
                     overlaps[flag].append(subject_list[j])
@@ -212,11 +217,13 @@ def user_chose_option_4(file_path: str):
         )
 
         for i in range(len(overlap)):
-            if i < 3:
-                date_start = datetime.strftime(overlap[i][1], "%d/%m/%Y %H:%M")
-                date_end = datetime.strftime(overlap[i][2], "%d/%m/%Y %H:%M")
+            date_start = datetime.strftime(overlap[i][1], "%d/%m/%Y %H:%M")
+            date_end = datetime.strftime(overlap[i][2], "%d/%m/%Y %H:%M")
 
-                print(f"{overlap[i][0]}: {date_start} - {date_end}")
+            print(f"{overlap[i][0]}: {date_start} - {date_end}")
+
+            if i == 3:
+                break
 
         print(
             "\nJeśli w ciągu wcześniej zaplanowanego wydarzenia dzieje się coś, co chcesz mieć w planie, "
