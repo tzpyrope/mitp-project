@@ -19,6 +19,7 @@ def check_if_wrong_choice_input(choice: str):
 
 
 def main():
+    file_path = rc1.file_path
 
     instructions = make_main_part_instructions_str()
     print(instructions)
@@ -33,14 +34,11 @@ def main():
         elif user_choice == "2":
             user_chose_option_2()
         elif user_choice == "3":
-            chosen_mode = Mode3()
-            chosen_mode.user_chose_option_3()
+            user_chose_option_3()
         elif user_choice == "4":
-            chosen_mode = Mode4()
-            chosen_mode.user_chose_option_4()
+            user_chose_option_4(file_path)
         elif user_choice == "5":
-            chosen_mode = Mode5()
-            print(chosen_mode)
+            pass
         elif user_choice == "6":
             user_chose_option_6()
         elif user_choice == "7":

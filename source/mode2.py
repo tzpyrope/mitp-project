@@ -88,8 +88,8 @@ def get_user_input_class_type(class_type_dict: dict):
     return class_type_input
 
 
-def search_for_class_type_corresponding_to_user_choice(self, class_type_dict: dict):
-    class_type = self.get_user_input_class_type(class_type_dict)
+def search_for_class_type_corresponding_to_user_choice(class_type_dict: dict):
+    class_type = get_user_input_class_type(class_type_dict)
 
     # szukanie typu odpowiadającemu wybranemu numerowi
     for key in class_type_dict:

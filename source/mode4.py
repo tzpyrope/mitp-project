@@ -28,7 +28,7 @@ def check_if_day_in_correct_format(day: str):
     return day
 
 
-def get_start_day_input(self):
+def get_start_day_input():
     start_day = input(
         "\nWpisz dzień, w którym wydarzenie się rozpoczyna (format dd/mm/yyyy): "
     )
@@ -38,7 +38,7 @@ def get_start_day_input(self):
     return start_day
 
 
-def get_end_day_input(self):
+def get_end_day_input():
     end_day = input(
         '\nJeśli wydarzenie się powtarza co tydzień o tej samej godzinie, wpisz dzień, w którym się kończy (format dd/mm/yyyy).\
                         \nJeśli wydarzenie trwa tylko jeden dzień, wpisz "brak": '
@@ -107,7 +107,7 @@ def create_lists_of_dates(start_day, end_day, start_hour, end_hour):
 
 
 def check_if_events_overlap(start_day, end_day, start_hour, end_hour):
-    lists = self.create_lists_of_dates(start_day, end_day, start_hour, end_hour)
+    lists = create_lists_of_dates(start_day, end_day, start_hour, end_hour)
     (start_list, end_list) = lists
 
     overlaps = []
@@ -130,17 +130,17 @@ def check_if_events_overlap(start_day, end_day, start_hour, end_hour):
     return overlaps_sorted
 
 
-def make_inputs_into_dict(self):
-    title = self.get_title_input()
-    event_type = self.get_type_input()
-    start_day = self.get_start_day_input()
-    end_day = self.get_end_day_input()
-    hours = self.get_hours_input()
+def make_inputs_into_dict():
+    title = get_title_input()
+    event_type = get_type_input()
+    start_day = get_start_day_input()
+    end_day = get_end_day_input()
+    hours = get_hours_input()
     start_hour = hours[0]
     end_hour = hours[1]
-    place = self.get_location_input()
+    place = get_location_input()
 
-    overlap = self.check_if_events_overlap(start_day, end_day, start_hour, end_hour)
+    overlap = check_if_events_overlap(start_day, end_day, start_hour, end_hour)
 
     csv_input_dict = {
         "Nazwa": "brak",
@@ -200,7 +200,7 @@ def add_new_event(input_dict: dict, file_path: str):
         print("\nWydarzenie nie zostało dodane.\n")
 
 
-def user_chose_option_4(self, file_path):
+def user_chose_option_4(file_path: str):
     inputs = make_inputs_into_dict()
     (input_dict, overlap) = inputs
 
