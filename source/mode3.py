@@ -1,4 +1,4 @@
-from .instruct_and_date_conversion import *
+from .dates_conversion.instruct_and_date_conversion import *
 
 
 def check_if_3_input_is_correct(user_input: str):
