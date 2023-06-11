@@ -69,14 +69,12 @@ def search_through_rest_of_day(datetime_date: datetime):
 def if_next_class_found(busy: bool, next_class, datetime_date: datetime):
     if busy:
         hours_until = datediff_to_h_min(next_class, datetime_date)
-        next_class_str = "{:d}:{:02d}".format(next_class.hour, next_class.minute)
-        string = f"Następne najbliższe wydarzenie tego dnia jest o godzinie {next_class_str}, {hours_until} od teraz."
+        next_class_hour = "{:d}:{:02d}".format(next_class.hour, next_class.minute)
+        next_class_str = f"Następne najbliższe wydarzenie tego dnia jest o godzinie {next_class_hour}, {hours_until} od podanej godziny."
     else:
-        string = (
-            "Po podanej godzinie nie masz żadnych zaplanowanych wydarzeń tego dnia."
-        )
+        next_class_str =  "Po podanej godzinie nie masz żadnych zaplanowanych wydarzeń tego dnia."
 
-    return string
+    return next_class_str
 
 
 def find_next_class_if_no_class_when_specified(datetime_date: datetime):

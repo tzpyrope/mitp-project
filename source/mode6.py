@@ -99,15 +99,12 @@ def search_for_empty_slots_if_hours_specified(dates: list, busy_time: list):
                 empty_slots[flag].append(dates[0])
                 empty_slots[flag].append(busy_time[i][0])
 
-                flag += 1
-
             if busy_time[i][1] < dates[1]:
                 empty_slots.append([])
 
                 empty_slots[flag].append(busy_time[i][1])
                 empty_slots[flag].append(dates[1])
 
-                flag += 1
         else:
             if i == busy_time_len:
                 if busy_time[i][0] not in empty_slots[flag - 1]:
@@ -116,15 +113,12 @@ def search_for_empty_slots_if_hours_specified(dates: list, busy_time: list):
                     empty_slots[flag].append(busy_time[i - 1][1])
                     empty_slots[flag].append(busy_time[i][0])
 
-                    flag += 1
-
                 if dates[1] >= busy_time[i][1]:
                     empty_slots.append([])
 
                     empty_slots[flag].append(busy_time[i][1])
                     empty_slots[flag].append(dates[1])
 
-                    flag += 1
 
             elif busy_time[i][0] > dates[0] and i == 0:
                 empty_slots.append([])
@@ -134,13 +128,18 @@ def search_for_empty_slots_if_hours_specified(dates: list, busy_time: list):
 
                 flag += 1
 
+                empty_slots.append([])
+
+                empty_slots[flag].append(busy_time[i][1])
+                empty_slots[flag].append(busy_time[i + 1][0])
+
             else:
                 empty_slots.append([])
 
                 empty_slots[flag].append(busy_time[i][1])
                 empty_slots[flag].append(busy_time[i + 1][0])
 
-                flag += 1
+            flag += 1
 
     sorted_empty_slots = sorted(empty_slots, key=itemgetter(0))
 
@@ -172,28 +171,32 @@ def search_for_classes_for_date(day: str):
     return sorted_busy_time
 
 
-def search_for_empty_slots_if_hours_not_specified(day: str, busy_time: list):
+def search_for_empty_slots_if_hours_not_specified(day: datetime, busy_time: list):
     busy_time_len = len(busy_time) - 1
 
     empty_slots = []
     flag = 0
 
     for i in range(len(busy_time)):
-        if i == busy_time_len:
-            empty_slots.append([])
-
-            empty_slots[flag].append(busy_time[i][1])
-            empty_slots[flag].append(day + timedelta(days=1))
-
-            flag += 1
-
-        elif busy_time[i][0] != day and i == 0:
+        if i == 0:
             empty_slots.append([])
 
             empty_slots[flag].append(day)
             empty_slots[flag].append(busy_time[i][0])
 
-            flag += 1
+            if busy_time_len >= 1:
+                flag += 1
+
+                empty_slots.append([])
+
+                empty_slots[flag].append(busy_time[i][1])
+                empty_slots[flag].append(busy_time[i + 1][0])
+
+        elif i == busy_time_len:
+            empty_slots.append([])
+
+            empty_slots[flag].append(busy_time[i][1])
+            empty_slots[flag].append(day + timedelta(days=1))
 
         else:
             empty_slots.append([])
@@ -201,7 +204,7 @@ def search_for_empty_slots_if_hours_not_specified(day: str, busy_time: list):
             empty_slots[flag].append(busy_time[i][1])
             empty_slots[flag].append(busy_time[i + 1][0])
 
-            flag += 1
+        flag += 1
 
     sorted_empty_slots = sorted(empty_slots, key=itemgetter(0))
 

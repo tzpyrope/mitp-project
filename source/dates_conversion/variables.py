@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 from .readcsv import *
 
 
-rc1 = ReadCsvData("source/dates_conversion/events.csv")
+rc1 = ReadCsvData("events.csv")
 
 rc1.replace_none_with_empty()
 df = rc1.read_schedule_csv()

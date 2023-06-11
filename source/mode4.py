@@ -121,7 +121,9 @@ def check_if_events_overlap(start_day, end_day, start_hour, end_hour):
             for k in range(len(full_start[j])):
                 if (
                     full_start[j][k] > start_list[i] and full_start[j][k] < end_list[i]
-                ) or (full_end[j][k] > start_list[i] and full_end[j][k] < end_list[i]):
+                ) or (
+                    full_end[j][k] > start_list[i] and full_end[j][k] < end_list[i]
+                ):
                     overlaps.append([])
 
                     overlaps[flag].append(subject_list[j])
@@ -150,15 +152,15 @@ def make_inputs_into_dict():
     csv_input_dict = {
         "Nazwa": "brak",
         "Grupa": "brak",
-        "Typ": f'"{event_type}"',
-        "Tytuł": f'"{title}"',
+        "Typ": f"{event_type}",
+        "Tytuł": f"{title}",
         "Uwaga": "brak",
         "Dzień tygodnia": "brak",
-        "Pierwszy dzień": f'"{start_day}"',
-        "Ostatni dzień": f'"{end_day}"',
-        "Ogłoszony początek": f'"{start_hour}"',
-        "Ogłoszony koniec": f'"{end_hour}"',
-        "Miejsce": f'"{place}"',
+        "Pierwszy dzień": f"{start_day}",
+        "Ostatni dzień": f"{end_day}",
+        "Ogłoszony początek": f"{start_hour}",
+        "Ogłoszony koniec": f"{end_hour}",
+        "Miejsce": f"{place}",
         "Pojemność": "brak",
         "Prowadzący / Odpowiedzialny": "brak",
         "E-mail": "brak",
