@@ -9,7 +9,7 @@ def get_user_choice_input():
 
 def check_if_wrong_choice_input(choice: str):
     while True:
-        if choice in list(get_main_part_instructions().keys()):
+        if choice in get_main_part_instructions().keys():
             break
         else:
             print("\nWybierz jedną z podanych opcji.\n")

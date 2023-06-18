@@ -1,4 +1,5 @@
-from .dates_conversion.instruct_and_date_conversion import *
+from ..variables import *
+
 from .mode_functions import *
 from .mode_schema import Mode
 
@@ -43,7 +44,6 @@ class Mode2(Mode):
     def __search_for_closest_class_for_given_subject(
         self, subject: str, class_type: str
     ):
-        # szukanie najbliższej przyszłej daty podczas której zaczyna się dany przedmiot w danej formie
         dates_after = []
 
         for i in range(len(self.subject_list)):

@@ -1,6 +1,7 @@
 from operator import itemgetter
 
-from .dates_conversion.instruct_and_date_conversion import *
+from ..variables import *
+
 from .mode_schema import Mode
 
 

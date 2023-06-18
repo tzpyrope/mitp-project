@@ -1,7 +1,5 @@
 import pandas as pd
-import numpy as np
 
-from .dates_conversion.instruct_and_date_conversion import *
 from .mode2 import *
 
 
@@ -32,7 +30,7 @@ class Mode5(Mode):
 
         return class_type, subject
 
-    def __delete_rows_corresponding_with_event(self, class_type, subject):
+    def __delete_rows_corresponding_with_event(self, class_type: str, subject: str):
         df = pd.read_csv(
             r"%s" % self.file_path,
             delimiter=",",
@@ -47,7 +45,7 @@ class Mode5(Mode):
 
         df.to_csv(r"%s" % self.file_path, index=False)
 
-    def __confirm_delete(self, class_type, subject):
+    def __confirm_delete(self, class_type: str, subject: str):
         if pd.isna(class_type):
             confirmation_str =  f"\nTwoje wydarzenie:\
                 \n{subject}"

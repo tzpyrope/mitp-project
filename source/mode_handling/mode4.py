@@ -1,7 +1,7 @@
 import csv
+from datetime import datetime, timedelta
 from operator import itemgetter
 
-from .dates_conversion.instruct_and_date_conversion import *
 from .mode_schema import Mode
 
 
@@ -97,7 +97,7 @@ class Mode4(Mode):
 
         return week_count
 
-    def __create_lists_of_dates(self, start_day, end_day, start_hour, end_hour):
+    def __create_lists_of_dates(self, start_day: str, end_day: str, start_hour: str, end_hour: str):
         start_dates_list = []
         end_dates_list = []
 
@@ -118,7 +118,7 @@ class Mode4(Mode):
 
         return start_dates_list, end_dates_list
 
-    def __check_if_events_overlap(self, start_day, end_day, start_hour, end_hour):
+    def __check_if_events_overlap(self, start_day: str, end_day: str, start_hour: str, end_hour: str):
         lists = self.__create_lists_of_dates(start_day, end_day, start_hour, end_hour)
         (start_list, end_list) = lists
 
