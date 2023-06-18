@@ -19,30 +19,37 @@ def check_if_wrong_choice_input(choice: str):
 
 
 def main():
-    file_path = rc1.file_path
+    csv_handler = CsvConversion("events.csv")
+
+    m1 = Mode1(csv_handler)
+    m2 = Mode2(csv_handler)
+    m3 = Mode3(csv_handler)
+    m4 = Mode4(csv_handler)
+    m5 = Mode5(csv_handler)
+    m6 = Mode6(csv_handler)
+    m7 = Mode7(csv_handler)
 
     instructions = make_main_part_instructions_str()
     print(instructions)
 
     while True:
         user_choice = get_user_choice_input()
-
         user_choice = check_if_wrong_choice_input(user_choice)
 
         if user_choice == "1":
-            user_chose_option_1()
+            m1.run_mode()
         elif user_choice == "2":
-            user_chose_option_2()
+            m2.run_mode()
         elif user_choice == "3":
-            user_chose_option_3()
+            m3.run_mode()
         elif user_choice == "4":
-            user_chose_option_4(file_path)
+            m4.run_mode()
         elif user_choice == "5":
-            pass
+            m5.run_mode()
         elif user_choice == "6":
-            user_chose_option_6()
+            m6.run_mode()
         elif user_choice == "7":
-            user_chose_option_7()
+            m7.run_mode()
         elif user_choice == "help":
             print(instructions)
         elif user_choice == "exit":
